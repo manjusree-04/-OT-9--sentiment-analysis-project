@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Sentiment Analysis</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Centering content */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .content {
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #e5e5e5;
+      opacity: 0;
+      animation: titleAppear 2s forwards;
+    }
+
+    .predict-btn {
+      background-color: #ea0056;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      outline: none;
+      transform: scale(1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .predict-btn:hover {
+      background-color: #0089b3;
+      transform: scale(1.1);
+    }
+
+    .predict-btn:active {
+      transform: scale(1);
+    }
+
+    /* Animation for Title */
+    @keyframes titleAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation for container */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1 class="title">Twitter Sentiment Analysis</h1>
+      <button class="predict-btn" onclick="predictSentiment()">Predict Sentiment</button>
+    </div>
+  </div>
+
+  <script>
+    function predictSentiment() {
+      // For now, it just alerts a placeholder message.
+      alert("Sentiment prediction process would go here!");
+    }
+  </script>
+</body>
+</html>
