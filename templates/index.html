@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling with Dark Theme */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container for Centering Content */
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg,rgb(95, 146, 255),rgb(29, 123, 255));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Button Styling */
+        .predict-button {
+            background-color: #1e90ff;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .predict-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+
+        .predict-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .predict-button:hover {
+            background-color: #00bfff;
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.6);
+        }
+
+        /* Background Animation */
+        @keyframes moveBackground {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(45deg, #1a1a1a, #2c3e50, #1a1a1a);
+            z-index: -1;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        /* Glow Animation for Title */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5pxrgb(127, 255, 95), 0 0 10pxrgb(9, 77, 249), 0 0 20pxrgb(0, 115, 255), 0 0 40px #ff7e5f;
+            }
+            100% {
+                text-shadow: 0 0 10px #feb47b, 0 0 20px #feb47b, 0 0 40px #feb47b, 0 0 80px #feb47b;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Twitter Sentiment Analysis</h1>
+        <button class="predict-button" onclick="predictSentiment()">Predict Sentiment</button>
+    </div>
+
+    <script>
+        function predictSentiment() {
+            alert("Predict Sentiment button clicked!");
+            // You can add your logic here to handle the sentiment analysis
+        }
+    </script>
+</body>
+</html>
