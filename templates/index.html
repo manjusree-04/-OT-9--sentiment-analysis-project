@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Sentiment Analysis</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Container to center content */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    /* Title Styling */
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Button Styling */
+    button {
+      background: linear-gradient(135deg, #00b3b3, #007a7a);
+      border: none;
+      border-radius: 50px;
+      padding: 20px 40px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #008080, #00cccc);
+      transform: scale(1.05);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    button:active {
+      transform: scale(0.98);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Button Hover Animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Glow Effect for Button */
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Twitter Sentiment Analysis</h1>
+    <button id="predictButton">Predict Sentiment</button>
+  </div>
+
+  <script>
+    document.getElementById('predictButton').addEventListener('click', function() {
+      // This will simulate the sentiment prediction process with a simple alert
+      alert("Sentiment Prediction will be shown here!");
+      
+      // You can replace this with your actual sentiment analysis logic in future.
+    });
+  </script>
+
+</body>
+</html>
