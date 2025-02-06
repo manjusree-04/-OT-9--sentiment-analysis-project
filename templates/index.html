@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-size: 2.5rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards 0.5s;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards 1s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 15px rgba(255, 75, 43, 0.6);
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .floating-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 10s infinite linear;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-circles"></div>
+    <div class="container">
+        <h1>Twitter Sentiment Analysis</h1>
+        <button class="btn">Predict Sentiment</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const floatingCircles = document.querySelector(".floating-circles");
+            for (let i = 0; i < 15; i++) {
+                let circle = document.createElement("div");
+                let size = Math.random() * 60 + 20;
+                circle.classList.add("circle");
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                circle.style.left = `${Math.random() * 100}vw`;
+                circle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                floatingCircles.appendChild(circle);
+            }
+        });
+    </script>
+</body>
+</html>
