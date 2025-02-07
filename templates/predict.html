@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twitter Sentiment Analysis</title>
+    <title>Predict Sentiment</title>
     <style>
         /* General Reset */
         * {
@@ -28,19 +28,47 @@
         .container {
             text-align: center;
             position: relative;
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
         }
 
         /* Title Styling */
         h1 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(90deg, rgb(95, 146, 255), rgb(29, 123, 255));
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: glow 2s infinite alternate;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        textarea {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1rem;
+            resize: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        textarea:focus {
+            border-color: #1e90ff;
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+            outline: none;
         }
 
         /* Button Styling */
-        .predict-button {
+        .sentiment-button {
             background-color: #1e90ff;
             color: #ffffff;
             border: none;
@@ -54,7 +82,7 @@
             z-index: 1;
         }
 
-        .predict-button::before {
+        .sentiment-button::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -67,11 +95,11 @@
             z-index: -1;
         }
 
-        .predict-button:hover::before {
+        .sentiment-button:hover::before {
             transform: translate(-50%, -50%) scale(1);
         }
 
-        .predict-button:hover {
+        .sentiment-button:hover {
             background-color: #00bfff;
             box-shadow: 0 0 20px rgba(30, 144, 255, 0.6);
         }
@@ -96,20 +124,33 @@
             z-index: -1;
             animation: moveBackground 20s linear infinite;
         }
+
+        /* Glow Animation for Title */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #ff7e5f, 0 0 10px #ff7e5f, 0 0 20px #ff7e5f, 0 0 40px #ff7e5f;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="background"></div>
     <div class="container">
-        <h1>Twitter Sentiment Analysis</h1>
-        <button class="predict-button" onclick="redirectToPredict()">Predict Sentiment</button>
+        <h1>Predict Sentiment</h1>
+        <form action="/predict",method="POST">
+            <textarea name="message" placeholder="Enter your message here..." rows="5" required></textarea>
+            <button type="submit" class="sentiment-button">Know Sentiment</button>
+        </form>
     </div>
 
     <script>
-        function redirectToPredict() {
-            // Redirect to the /predict page
-            window.location.href = '/predict';
-        }
+        // Handle form submission
+        document.getElementById('sentimentForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+            const message = document.querySelector('textarea[name="message"]').value;
+            alert(`Message: "${message}"\nSentiment analysis will be performed here.`);
+            // You can add your logic here to handle the sentiment analysis
+        });
     </script>
 </body>
 </html>
