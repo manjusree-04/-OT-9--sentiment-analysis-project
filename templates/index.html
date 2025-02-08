@@ -94,14 +94,16 @@
   <div class="container">
     <div class="content">
       <h1 class="title">Twitter Sentiment Analysis</h1>
+      <!-- Button to trigger sentiment prediction and navigate to /predict page -->
       <button class="predict-btn" onclick="predictSentiment()">Predict Sentiment</button>
     </div>
   </div>
 
   <script>
+    // JavaScript function to redirect to the /predict page when the button is clicked
     function predictSentiment() {
-      // For now, it just alerts a placeholder message.
-      alert("Sentiment prediction process would go here!");
+      // Redirects to /predict page (no extra space after the URL)
+      window.location.href = "/predict";  // This will navigate to the /predict page
     }
   </script>
 </body>
