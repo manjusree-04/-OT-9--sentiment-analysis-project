@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predict Sentiment</title>
     <style>
-        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body Styling with Dark Theme */
         body {
             background-color: #121212;
             color: #ffffff;
@@ -24,7 +22,6 @@
             overflow: hidden;
         }
 
-        /* Container for Centering Content */
         .container {
             text-align: center;
             position: relative;
@@ -33,7 +30,6 @@
             padding: 20px;
         }
 
-        /* Title Styling */
         h1 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
@@ -43,7 +39,6 @@
             animation: glow 2s infinite alternate;
         }
 
-        /* Form Styling */
         form {
             display: flex;
             flex-direction: column;
@@ -67,7 +62,6 @@
             outline: none;
         }
 
-        /* Button Styling */
         .sentiment-button {
             background-color: #1e90ff;
             color: #ffffff;
@@ -82,50 +76,11 @@
             z-index: 1;
         }
 
-        .sentiment-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%);
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.5s ease;
-            z-index: -1;
-        }
-
-        .sentiment-button:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
         .sentiment-button:hover {
             background-color: #00bfff;
             box-shadow: 0 0 20px rgba(30, 144, 255, 0.6);
         }
 
-        /* Background Animation */
-        @keyframes moveBackground {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-50%);
-            }
-        }
-
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 200%;
-            background: linear-gradient(45deg, #1a1a1a, #2c3e50, #1a1a1a);
-            z-index: -1;
-            animation: moveBackground 20s linear infinite;
-        }
-
-        /* Glow Animation for Title */
         @keyframes glow {
             0% {
                 text-shadow: 0 0 5px #ff7e5f, 0 0 10px #ff7e5f, 0 0 20px #ff7e5f, 0 0 40px #ff7e5f;
@@ -134,23 +89,12 @@
     </style>
 </head>
 <body>
-    <div class="background"></div>
     <div class="container">
         <h1>Predict Sentiment</h1>
-        <form action="/predict",method="POST">
+        <form action="/predict" method="POST">
             <textarea name="message" placeholder="Enter your message here..." rows="5" required></textarea>
             <button type="submit" class="sentiment-button">Know Sentiment</button>
         </form>
     </div>
-
-    <script>
-        // Handle form submission
-        document.getElementById('sentimentForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission
-            const message = document.querySelector('textarea[name="message"]').value;
-            alert(`Message: "${message}"\nSentiment analysis will be performed here.`);
-            // You can add your logic here to handle the sentiment analysis
-        });
-    </script>
 </body>
 </html>
