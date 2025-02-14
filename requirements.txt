@@ -1,0 +1,4 @@
+gunicon
+flask
+scitit-learn
+nltk
