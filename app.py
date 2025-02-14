@@ -11,11 +11,9 @@ def Home():
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
     if request.method == "POST":
-        msg = request.form.get("message")  # Get the message from the form
+        msg = request.form.get("message")  
         print(f"Message received: {msg}")
-
         
-        # You can add your prediction logic here if needed
         prediction = f"Received message: {msg}"
 
         cl=TextToNum(msg)
@@ -23,7 +21,7 @@ def predict():
         cl.token()
         cl.removeStop()
         st=cl.stemme()
-        stvc=" ".join(st) # Just an example response for now
+        stvc=" ".join(st) 
         with open("vectorizer.pickle","rb") as vc_file :
             vectorizer=pickle.load(vc_file)
 
@@ -31,12 +29,16 @@ def predict():
         with open("model.pickle","rb") as mb_file:
             model=pickle.load(mb_file)
         pred=model.predict(dt)
-        print(pred)
-        return jsonify({"prediction":str(pred[0])})
-        
-    else:
-        return render_template("predict.html", prediction=None)  # For GET request
+        if pred[0]==1:
+            pred ="Postive"
+        elif pred[0]==-1:
+            pred ="Negative"
+        else:
+            pred ="Neutral"
+        #return jsonify({"prediction":str(pred[0])})
+        return render_template("result.html",prediction=pred)
     
+    return render_template("predict.html")  # For GET request  
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050)
