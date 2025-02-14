@@ -13,7 +13,7 @@ def predict():
         cl = TextToNum(msg)
         cl.cleaner()
         cl.token()
-        cl.removestop()
+        cl.removeStop()
         st = cl.stemme()
         stvc = " ".join(st)
         with open("vectorizer.pickle","rb") as vc_file:
@@ -22,15 +22,22 @@ def predict():
         with open("model.pickle","rb") as mb_file:
             model = pickle.load(mb_file)
         pred = model.predict(dt)
-        print(pred)
-        return jsonify({"prediction":str(pred[0])})
+        if pred[0]==1:
+            pred = "positive"
+        elif pred[0]==0:
+            pred="Neutral"
+        else:
+            pred="Negative"
+
+        return render_template("result.html", prediction=pred)
+       # return jsonify({"prediction":str(pred[0])})
 
         
         
 
 
-    else:
-        return render_template("predict.html")
+    
+    return render_template("predict.html")
 
 
 
